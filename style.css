@@ -85,7 +85,7 @@ a:hover {
         height: 33lvh;
     }
     #photo img {
-        content: url("me_mobile.jpg");
+        content: url("me_mobile.webp");
     }
     #all {
         flex-direction: column;
