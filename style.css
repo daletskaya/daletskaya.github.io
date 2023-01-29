@@ -1,0 +1,116 @@
+body {
+    margin: 0lvh;
+}
+html {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 2.5lvh;
+    line-height: 2lvh;
+}
+#photo {
+    margin: 0px;
+    margin-left: 112px;
+    width: 44.4vw;
+    max-height: 100vh;
+    }
+#photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#content {
+    margin-left: 3lvw;
+    flex-grow: 55;
+    flex-direction: column;
+}
+h1 {
+    font-family: 'Finlandica', sans-serif;
+    font-weight: normal;
+    font-size: 12lvh;
+    line-height: 13lvh;
+    margin-top: 2.5lvh;
+}
+#name {
+    flex-grow: 0;
+}
+a {
+    color:#0047FF;
+    text-decoration: none;
+}
+a:hover {
+    border-bottom:solid 1px;
+}
+.flex-wrapper {
+    display: flex; 
+    flex-direction: row;
+}
+#all { 
+    background-color: white;
+    flex-direction: row-reverse;
+    height: 100vh;
+    }
+#info {
+    flex-grow: 1;
+}
+#info_right {
+    flex-grow: 1;
+}
+#info_left, #info_right, #footer {
+    flex-direction: column;
+}
+#info_left {
+    width: 12lvw;
+    margin-right: 2lvw;
+}
+.text_brick {
+    margin-top: 2lvh;
+    line-height: 3.5lvh;
+}
+#links > div {   
+    margin-right: 4lvw; 
+} 
+#lets_do {
+    margin-bottom: 2.2lvh;
+}
+#footer {
+    flex-grow: 0;
+    height: 6lvh;
+    margin-bottom: 6lvh;
+}
+
+
+@media screen and (max-aspect-ratio: 1/1) {
+    #photo {
+        width: 100vw;
+        margin: 0px;
+        height: 33lvh;
+    }
+    #photo img {
+        content: url("me_mobile.jpg");
+    }
+    #all {
+        flex-direction: column;
+    }
+    #content {
+        margin-left: 4lvw;
+    }
+    h1 {
+        font-weight: normal;
+        font-size: 9.5lvh;
+        line-height: 10.5lvh;
+        margin-top: 0lvh;
+        margin-bottom: 3lvh;
+    }
+    #info_left {
+        width: 37lvw;
+    }
+    #info_right {
+        width: 37lvw;
+    }
+    .text_brick {
+        margin-top: 1lvh;
+        line-height: 3lvh;
+    }
+    #footer {
+        margin-bottom: 3lvh;
+    }
+}
