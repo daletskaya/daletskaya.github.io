@@ -4,7 +4,7 @@ body {
 html {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 2.5lvh;
-    line-height: 2lvh;
+    line-height: 3.1lvh;
 }
 #photo {
     margin: 0px;
@@ -25,12 +25,19 @@ html {
 #content_grid {
     display: grid; 
     grid-template-columns:  repeat(2, 1fr);  
-    grid-template-rows: repeat(2, 6.66 lvh); 
-    gap: 10px; 
+    grid-template-rows: repeat(1, 6.66lvh); 
+    row-gap: 1lvh; 
+    column-gap: 9lvh; 
     grid-template-areas: 'name name'
+                         'name name'
+                         'name name'
                          'name name'
                          'i_am channel'
                          'study chgk'
+                         'empty empty'
+                         'empty empty'
+                         'empty empty'
+                         'empty empty'
                          'empty empty'
                          'empty empty'
                          'empty empty'
@@ -48,8 +55,9 @@ h1 {
     font-family: 'Finlandica', sans-serif;
     font-weight: normal;
     font-size: 12lvh;
-    line-height: 13lvh;
-    margin-top: 2.5lvh;
+    line-height: 12.5lvh;
+    margin-top: 5lvh;
+    margin-bottom: 0;
 }
 #i_am {
     grid-area: i_am;
@@ -66,8 +74,15 @@ h1 {
 #empty {
     grid-area: empty;
 }
+#bottom_wrapper {
+    display: table;
+    height: auto;
+}
 #lets_do {
     grid-area: lets_do;
+}
+.small_link {
+    font-size: 1.6lvh;
 }
 #links {
     grid-area: links;
@@ -88,9 +103,9 @@ a:hover {
     flex-direction: row-reverse;
     height: 100vh;
     }
-
-#links > div {   
-    margin-right: 4lvw; 
+#probel {
+    display: inline-block;
+    width: 2lvw;
 } 
 #lets_do {
     margin-bottom: 2.2lvh;
