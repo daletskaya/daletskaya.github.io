@@ -131,12 +131,33 @@ a:hover {
     }
     #content {
         margin-left: 4lvw;
+        margin-right: 1lvw;
+    }
+    #content_grid {
+        display: grid; 
+        grid-template-columns:  repeat(2, 1fr);  
+        grid-template-rows: repeat(1, 6.66lvh); 
+        row-gap: 1lvh; 
+        column-gap: 0lvh; 
+        grid-template-areas: 'name name'
+                             'name name'
+                             'name name'
+                             'i_am channel'
+                             'study chgk'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'lets_do links'
+                            
+                            
+        ; 
     }
     h1 {
         font-weight: normal;
         font-size: 9.5lvh;
-        line-height: 10.5lvh;
-        margin-top: 0lvh;
+        line-height: 10lvh;
+        margin-top: 2lvh;
         margin-bottom: 3lvh;
     }
     #footer {
