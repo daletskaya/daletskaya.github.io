@@ -8,7 +8,6 @@ html {
 }
 #photo {
     margin: 0px;
-    margin-left: 112px;
     width: 44.4vw;
     max-height: 100vh;
     }
@@ -161,5 +160,57 @@ a:hover {
     }
     #footer {
         margin-bottom: 3lvh;
+    }
+}
+@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/10) {
+    #photo {
+        margin-left: 4lvw;
+        height: 100%;
+        max-width: 100%;
+    }
+    #content_grid {
+        row-gap: 1.5lvh; 
+        column-gap: 3vh;
+        grid-template-areas: 'name name'
+                             'name name'
+                             'name name'
+                             'i_am channel'
+                             'study chgk'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'lets_do links'
+                            
+                            
+        ; 
+    }
+}
+@media screen and (min-aspect-ratio: 10/16) and (max-aspect-ratio: 1/1) {
+    #photo {
+        margin-left: 4lvw;
+        height: 100%;
+        max-width: 100%;
+    }
+    /* h1 {
+        font-size: 14lvh;
+        line-height: 15.8lvh;
+    } */
+    #content_grid {
+        row-gap: 1.5lvh; 
+        column-gap: 6vh;
+        grid-template-areas: 'name name'
+                             'name name'
+                             'name name'
+                             'i_am channel'
+                             'study chgk'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'empty empty'
+                             'lets_do links'
+                            
+                            
+        ; 
     }
 }
