@@ -119,8 +119,10 @@ a:hover {
 
 @media screen and (max-aspect-ratio: 1/1) {
     #photo {
-        width: 100vw;
-        margin: 0px;
+        width: 92vw;
+        margin-left: 4lvw;
+        margin-right: 4lvw;
+        margin-top: 4lvw;
         height: 100%;
     }
     #photo img {
@@ -135,7 +137,7 @@ a:hover {
     }
     #content_grid {
         row-gap: 1.5lvh; 
-        column-gap: 0lvh; 
+        column-gap: 2vh; 
         grid-template-areas: 'name name'
                              'name name'
                              'name name'
