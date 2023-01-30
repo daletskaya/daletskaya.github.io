@@ -121,7 +121,7 @@ a:hover {
     #photo {
         width: 100vw;
         margin: 0px;
-        height: 33lvh;
+        height: 100%;
     }
     #photo img {
         content: url("me_mobile.webp");
@@ -134,10 +134,7 @@ a:hover {
         margin-right: 1lvw;
     }
     #content_grid {
-        display: grid; 
-        grid-template-columns:  repeat(2, 1fr);  
-        grid-template-rows: repeat(1, 6.66lvh); 
-        row-gap: 1lvh; 
+        row-gap: 1.5lvh; 
         column-gap: 0lvh; 
         grid-template-areas: 'name name'
                              'name name'
