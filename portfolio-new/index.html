@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arina Daletskaya — Product Designer</title>
+  <meta name="description" content="Product Designer · FoodTech · UX Research · Mobile & Web" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #aeaeb2;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --border: #d2d2d7;
+      --card-bg: #f5f5f7;
+      --nav-bg: rgba(255,255,255,0.85);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-w: 960px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      height: 48px;
+      width: calc(100% - 48px);
+      max-width: 960px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.38);
+      backdrop-filter: saturate(180%) blur(32px);
+      -webkit-backdrop-filter: saturate(180%) blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow:
+        0 2px 24px rgba(0,0,0,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav-logo-hi,
+    .nav-logo-name {
+      display: block;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-logo-name {
+      position: absolute;
+      top: 0; left: 0;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(5px);
+    }
+
+    .nav-logo-hi {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    nav.past-hero .nav-logo-hi {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    nav.past-hero .nav-logo-name {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 11px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 16px;
+      transition: all var(--transition);
+      letter-spacing: 0.2px;
+    }
+
+    .lang-btn.active {
+      background: var(--bg);
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+
+
+    /* ── LAYOUT ── */
+    section { padding: 80px 48px; max-width: var(--max-w); margin: 0 auto; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+
+    .hero-name {
+      font-size: clamp(44px, 7.5vw, 84px);
+      font-weight: 600;
+      letter-spacing: -2.5px;
+      line-height: 1.02;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      font-style: italic;
+      letter-spacing: -0.1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 300;
+      letter-spacing: -0.8px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 44px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 22px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover { background: #e5e5ea; transform: scale(1.02); }
+
+    /* ── ABOUT ── */
+    .rounded-section {
+      background: var(--bg-secondary);
+      border-radius: 28px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 48px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-left h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 600;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .about-left p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about-left p:last-of-type { margin-bottom: 0; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 44px;
+    }
+
+    .stat-item {
+      padding: 24px 20px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-item:last-child { border-bottom: none; }
+
+    .skill-name {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+
+    .skill-tag {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      letter-spacing: 0.2px;
+    }
+
+    /* ── CASE CARDS ── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .case-card {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--bg);
+      display: block;
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .case-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .case-visual {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      overflow: hidden;
+    }
+
+    .case-body { padding: 14px 16px 16px; }
+
+    .case-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 5px;
+    }
+
+    .case-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .case-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 44px;
+    }
+
+    .exp-list { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 36px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .exp-years {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+
+    .exp-role {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .exp-company {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .exp-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .exp-highlights {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .exp-highlight {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .exp-highlight-num {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .exp-highlight-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .exp-item--wide {
+      grid-template-columns: 1fr;
+    }
+
+    /* ── EXPERIENCE (белый фон, как section) ── */
+    #experience {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    /* ── Отступы между блоками ── */
+    .rounded-section {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    /* gap после серой карточки About */
+    #about { margin-bottom: 0; }
+    #experience { padding-top: 80px; }
+
+    /* визуальный разделитель между Experience и Channel */
+    #channel { padding-top: 80px; }
+
+    /* ── TESTIMONIALS ── */
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background: var(--text-primary);
+      border-radius: var(--radius);
+      padding: 36px 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .testimonial-card--wide {
+      grid-column: span 2;
+    }
+
+    .testimonial-quote {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      letter-spacing: -0.2px;
+      font-style: normal;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .testimonial-quote em {
+      font-style: normal;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.1px;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: rgba(255,255,255,0.42);
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-card--wide { grid-column: span 1; }
+      .testimonial-quote { font-size: 16px; }
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding-top: 80px;
+      padding-bottom: 100px;
+    }
+
+    #contact h2 {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 600;
+      letter-spacing: -2px;
+      line-height: 1.04;
+      margin-bottom: 20px;
+    }
+
+    #contact p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px max(24px, 5vw);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p { font-size: 12px; color: var(--text-tertiary); }
+    footer a {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    footer a:hover { color: var(--text-secondary); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── LANG ── */
+    [data-lang] { display: none; }
+    body[data-active-lang="en"] [data-lang="en"] { display: revert; }
+    body[data-active-lang="ru"] [data-lang="ru"] { display: revert; }
+    [data-lang="both"] { display: revert !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      nav { width: calc(100% - 24px); top: 12px; }
+      section { padding: 56px 20px; }
+
+      /* ── Experience: тёмный фон от края до края ── */
+      #experience {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 48px 20px;
+        background: #111111;
+        border-radius: 0;
+        /* переопределяем переменные — все дочерние элементы подхватят */
+        --text-primary:    #ffffff;
+        --text-secondary:  rgba(255,255,255,0.62);
+        --text-tertiary:   rgba(255,255,255,0.52);
+        --border:          rgba(255,255,255,0.11);
+        --bg:              rgba(255,255,255,0.07);
+        --bg-secondary:    rgba(255,255,255,0.04);
+        --accent:          #60aaff;
+      }
+
+      /* чуть больше контраста для карточек и хайлайтов внутри */
+      #experience .case-card,
+      #experience .exp-highlight {
+        background: rgba(255,255,255,0.09);
+      }
+
+      /* внутреннее / внешнее: лейбл → заголовок — тесная связь, заголовок → контент — чуть больше */
+      #experience .section-label { margin-bottom: 12px; }
+      #experience h2 { margin-bottom: 24px; color: #ffffff; }
+      #experience .exp-role { font-size: 17px; }
+      #experience .exp-company { margin-bottom: 14px; }
+      #experience .exp-item { padding: 28px 0; }
+      #experience .exp-item:first-child { padding-top: 0; }
+      #experience .case-grid { margin-top: 16px; }
+
+      #hero { padding-top: 90px; }
+      .rounded-section { margin: 0 12px; padding: 40px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(3,1fr); }
+      .exp-item { grid-template-columns: 1fr; gap: 4px; }
+      .edu-details .exp-item { padding: 24px 0; }
+      .edu-details .exp-years { margin-bottom: 2px; }
+      footer { flex-direction: column; text-align: center; }
+      .contact-links { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── CHANNEL ── */
+    #channel h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .channel-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 560px;
+    }
+
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .channel-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 28px 30px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .channel-card--quote {
+      grid-column: span 2;
+      background: var(--text-primary);
+      color: white;
+    }
+
+    .channel-card-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .channel-card--quote .channel-card-label {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .channel-quote {
+      font-size: 20px;
+      font-weight: 400;
+      color: white;
+      line-height: 1.5;
+      letter-spacing: -0.3px;
+      border: none;
+      padding: 0;
+      margin: 4px 0;
+      font-style: normal;
+    }
+
+    .channel-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .channel-card-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .channel-card-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+
+    .channel-card-link:hover { text-decoration: underline; }
+
+    .channel-card--quote .channel-card-link {
+      color: rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 768px) {
+      .channel-grid { grid-template-columns: 1fr; }
+      .channel-card--quote { grid-column: span 1; }
+    }
+
+
+    /* ── EDUCATION COLLAPSE ── */
+    .edu-summary-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 36px 40px 32px;
+    }
+
+    .edu-summary-text {
+      font-size: clamp(19px, 2.4vw, 26px);
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      line-height: 1.4;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+    }
+
+    .edu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: transparent;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .edu-toggle:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .edu-toggle-icon {
+      display: inline-block;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      font-style: normal;
+    }
+
+    .edu-toggle.open .edu-toggle-icon { transform: rotate(180deg); }
+
+    .edu-details {
+      margin-top: 32px;
+    }
+
+    .edu-details.hidden { display: none; }
+
+    /* последний элемент образования — без нижней границы */
+    .edu-item-last { border-bottom: none !important; padding-bottom: 0 !important; }
+
+    /* ── CASE MODAL ── */
+    .case-card { cursor: pointer; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-sheet {
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      max-width: 720px;
+      max-height: 92vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .modal-header-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #86868b;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: #f0f0f0;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      color: #1d1d1f;
+    }
+    .modal-close:hover { background: #e4e4e4; }
+
+    .modal-body {
+      padding: 32px 24px 48px;
+    }
+
+    .modal-title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      font-size: 15px;
+      color: #86868b;
+      margin-bottom: 32px;
+    }
+
+    .modal-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #86868b;
+      margin-bottom: 12px;
+      margin-top: 36px;
+    }
+    .modal-section-title:first-child { margin-top: 0; }
+
+    .modal-text {
+      font-size: 16px;
+      color: #1d1d1f;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .modal-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #f5f5f7;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #aeaeb2;
+      margin-bottom: 20px;
+    }
+
+    .modal-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .modal-metric {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .modal-metric-num {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-metric-label {
+      font-size: 12px;
+      color: #86868b;
+      margin-top: 2px;
+    }
+
+
+  </style>
+</head>
+
+<body data-active-lang="en">
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <span class="nav-logo-hi">Hi there!</span>
+    <span class="nav-logo-name" data-lang="en">Arina Daletskaya</span>
+    <span class="nav-logo-name" data-lang="ru">Арина Далецкая</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li>
+        <a href="#experience" data-lang="en">Work</a>
+        <a href="#experience" data-lang="ru">Работы</a>
+      </li>
+      <li>
+        <a href="#about" data-lang="en">About</a>
+        <a href="#about" data-lang="ru">Обо мне</a>
+      </li>
+      <li>
+        <a href="#experience" data-lang="en">Experience</a>
+        <a href="#experience" data-lang="ru">Опыт</a>
+      </li>
+      <li>
+        <a href="#contact" data-lang="en">Contact</a>
+        <a href="#contact" data-lang="ru">Контакт</a>
+      </li>
+
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+</nav>
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow fade-in" data-lang="en">Product Designer</p>
+  <p class="hero-eyebrow fade-in" data-lang="ru">Продуктовый дизайнер</p>
+  <h1 class="hero-name fade-in">Arina<br/>Daletskaya</h1>
+  <p class="hero-title fade-in" data-lang="both">Think about users<br/>to improve the business.</p>
+  <p class="hero-desc fade-in" data-lang="en">I design digital products that are easy to use and hard to put down. Currently at <strong>Tanuki Tech</strong> — a B2C FoodTech e-commerce platform where I build the end-to-end ordering experience for 100+ restaurants across 3 countries.</p>
+  <p class="hero-desc fade-in" data-lang="ru">Проектирую продукты, которыми приятно пользоваться. Сейчас в <strong>Tanuki Tech</strong> — B2C FoodTech e-commerce, где я строю сквозной путь пользователя для 100+ ресторанов в 3 странах.</p>
+  <div class="hero-cta fade-in">
+    <a href="#experience" class="btn-primary" data-lang="en">See my work →</a>
+    <a href="#experience" class="btn-primary" data-lang="ru">Смотреть работы →</a>
+    <a href="#contact" class="btn-secondary" data-lang="en">Get in touch</a>
+    <a href="#contact" class="btn-secondary" data-lang="ru">Написать мне</a>
+  </div>
+</section>
+<!-- ABOUT -->
+<div id="about" class="rounded-section fade-in">
+  <p class="section-label" data-lang="en">About</p>
+  <p class="section-label" data-lang="ru">Обо мне</p>
+  <div class="about-grid">
+    <div class="about-left">
+      <h2 data-lang="en">The best design<br/>goes unnoticed</h2>
+      <h2 data-lang="ru">Лучший дизайн<br/>остаётся незаметным</h2>
+      <p data-lang="en">I work on the end-to-end customer journey — from registration and product discovery to cart, checkout, and payments. My daily work includes designing for mobile and web, conducting UX research, writing interface copy, and collaborating closely with developers.</p>
+      <p data-lang="ru">Я работаю над путём пользователя от начала до конца — от регистрации и выбора до корзины, оформления заказа и оплаты. Ежедневно проектирую для мобайла и веба, провожу UX-исследования, пишу интерфейсные тексты и работаю в тесном контакте с разработчиками.</p>
+      <p data-lang="en">I believe in both data and design intuition. I generate and test product hypotheses, work with metrics, and always ask "why". I started my career in a creative agency, designing for fintech, hospitality, and healthcare.</p>
+      <p data-lang="ru">Верю и в данные, и в дизайн-интуицию. Генерирую и проверяю продуктовые гипотезы, работаю с метриками и всегда спрашиваю «почему». Начинала в креативном агентстве, делала продукты для финтех, гостиничной отрасли и здравоохранения.</p>
+      <p data-lang="en">Design has been my thing since I was 8. I genuinely love what I do — and I share thoughts about it on Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
+      <p data-lang="ru">Дизайн — моё с 8 лет. Я по-настоящему люблю то, что делаю — и иногда делюсь мыслями в Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
+
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-number">700K</span>
+          <span class="stat-label" data-lang="en">guests/month on the platform I design for</span>
+          <span class="stat-label" data-lang="ru">гостей/мес на платформе, которую я проектирую</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label" data-lang="en">UX improvements proposed in a single audit</span>
+          <span class="stat-label" data-lang="ru">UX-улучшений в рамках одного аудита</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">17</span>
+          <span class="stat-label" data-lang="en">years in design — started at 8</span>
+          <span class="stat-label" data-lang="ru">лет в дизайне — начала в 8</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="about-right">
+      <p class="section-label" data-lang="en">Skills & Tools</p>
+      <p class="section-label" data-lang="ru">Навыки и инструменты</p>
+      <div class="skills-list">
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">Figma, Miro, Adobe CC</span>
+          <span class="skill-name" data-lang="ru">Figma, Miro, Adobe CC</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">UX Research & Usability Testing</span>
+          <span class="skill-name" data-lang="ru">UX-исследования и юзабилити</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">User Interviews, CJM, JTBD, CustDev</span>
+          <span class="skill-name" data-lang="ru">Интервью, CJM, JTBD, CustDev</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">Prototyping & Wireframing</span>
+          <span class="skill-name" data-lang="ru">Прототипирование и вайрфреймы</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">Design Systems</span>
+          <span class="skill-name" data-lang="ru">Дизайн-системы</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">UX Writing & Interface Copy</span>
+          <span class="skill-name" data-lang="ru">UX-копирайтинг</span>
+          
+        </div>
+        <div class="skill-item">
+          <span class="skill-name" data-lang="en">Data-driven design, Yandex Metrica</span>
+          <span class="skill-name" data-lang="ru">Data-driven дизайн, Яндекс Метрика</span>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- EXPERIENCE -->
+<div id="experience" class="fade-in">
+  <p class="section-label" data-lang="en">Experience</p>
+  <p class="section-label" data-lang="ru">Опыт</p>
+  <h2 data-lang="en">Where I've worked</h2>
+  <h2 data-lang="ru">Где я работала</h2>
+
+  <div class="exp-list">
+
+    <!-- Tanuki Tech -->
+    <div class="exp-item exp-item--wide">
+      <div>
+        <p class="exp-role" data-lang="en">Product Designer</p>
+        <p class="exp-role" data-lang="ru">Продуктовый дизайнер</p>
+        <p class="exp-company" data-lang="both">Tanuki Tech</p>
+
+        <div class="exp-highlights">
+          <div class="exp-highlight">
+            <span class="exp-highlight-num" data-lang="both">2×</span>
+            <span class="exp-highlight-label" data-lang="en">fewer operational costs from new login flow<br/><span style="color:var(--text-tertiary)">saving ~$2,500/month</span></span>
+            <span class="exp-highlight-label" data-lang="ru">снижение операционных трат за счёт нового флоу входа<br/><span style="color:var(--text-tertiary)">экономия ~$2 500/мес</span></span>
+          </div>
+          <div class="exp-highlight">
+            <span class="exp-highlight-num" data-lang="both">2→5%</span>
+            <span class="exp-highlight-label" data-lang="en">conversion growth after homepage redesign</span>
+            <span class="exp-highlight-label" data-lang="ru">рост конверсии перехода после редизайна главного экрана</span>
+          </div>
+
+        </div>
+        <div class="case-grid">
+          <div class="case-card" data-case="tanuki-login">
+            <div class="case-visual" style="background:linear-gradient(135deg,#e8f4fd 0%,#c5dff7 100%);">🔑</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Mobile · Auth</p>
+              <p class="case-tag" data-lang="ru">Мобайл · Авторизация</p>
+              <p class="case-title" data-lang="en">Login flow redesign</p>
+              <p class="case-title" data-lang="ru">Редизайн флоу логина</p>
+              <p class="case-desc" data-lang="en">Cut operational costs 2× — saving ~$2,500/month</p>
+              <p class="case-desc" data-lang="ru">Операционные затраты снизились в 2 раза — ~$2 500/мес экономии</p>
+            </div>
+          </div>
+          <div class="case-card" data-case="tanuki-homepage">
+            <div class="case-visual" style="background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);">📱</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Mobile · Homepage</p>
+              <p class="case-tag" data-lang="ru">Мобайл · Главный экран</p>
+              <p class="case-title" data-lang="en">Homepage redesign</p>
+              <p class="case-title" data-lang="ru">Редизайн главного экрана</p>
+              <p class="case-desc" data-lang="en">Conversion grew from 2% to 5% after launch</p>
+              <p class="case-desc" data-lang="ru">Конверсия выросла с 2 до 5% после запуска</p>
+            </div>
+          </div>
+          <div class="case-card" data-case="tanuki-order">
+            <div class="case-visual" style="background:linear-gradient(135deg,#fff3e0 0%,#ffe0b2 100%);">📦</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Mobile · Order</p>
+              <p class="case-tag" data-lang="ru">Мобайл · Заказ</p>
+              <p class="case-title" data-lang="en">Order status card</p>
+              <p class="case-title" data-lang="ru">Карточка статуса заказа</p>
+              <p class="case-desc" data-lang="en">Redesigned the post-order tracking experience</p>
+              <p class="case-desc" data-lang="ru">Переработала отслеживание заказа после оформления</p>
+            </div>
+          </div>
+          <div class="case-card" data-case="tanuki-cart">
+            <div class="case-visual" style="background:linear-gradient(135deg,#e0f5f5 0%,#b2dfdf 100%);">🛒</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Mobile · Web</p>
+              <p class="case-tag" data-lang="ru">Мобайл · Веб</p>
+              <p class="case-title" data-lang="en">Cart & checkout redesign</p>
+              <p class="case-title" data-lang="ru">Редизайн корзины и чекаута</p>
+              <p class="case-desc" data-lang="en">End-to-end overhaul of the purchase flow</p>
+              <p class="case-desc" data-lang="ru">Полный редизайн пути от корзины до оплаты</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- IT-Agency -->
+    <div class="exp-item exp-item--wide">
+      <div>
+        <p class="exp-role" data-lang="en">UX/UI Designer</p>
+        <p class="exp-role" data-lang="ru">UX/UI-дизайнер</p>
+        <p class="exp-company" data-lang="both">IT-Agency</p>
+        <div class="case-grid">
+          <div class="case-card" data-case="agency-clinic">
+            <div class="case-visual" style="background:linear-gradient(135deg,#fce4ec 0%,#f8bbd0 100%);">🏥</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Healthcare · UX</p>
+              <p class="case-tag" data-lang="ru">Здравоохранение · UX</p>
+              <p class="case-title" data-lang="en">Rehabilitation clinic — ongoing work</p>
+              <p class="case-title" data-lang="ru">Сайт клиники реабилитации — в процессе</p>
+              <p class="case-desc" data-lang="en">Long-term UX & visual improvements — case with images coming soon</p>
+              <p class="case-desc" data-lang="ru">Долгосрочная работа над интерфейсом — скоро с картинками</p>
+            </div>
+          </div>
+          <div class="case-card" data-case="agency-fintech">
+            <div class="case-visual" style="background:linear-gradient(135deg,#f3e5f5 0%,#e1bee7 100%);">💳</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">Fintech · Landing</p>
+              <p class="case-tag" data-lang="ru">Финтех · Лендинг</p>
+              <p class="case-title" data-lang="en">Fintech landing page</p>
+              <p class="case-title" data-lang="ru">Лендинг для финтех-клиента</p>
+              <p class="case-desc" data-lang="en">New market entry — zero to launch in one month</p>
+              <p class="case-desc" data-lang="ru">Выход на новый рынок — с нуля до релиза за месяц</p>
+            </div>
+          </div>
+          <div class="case-card" data-case="agency-audit">
+            <div class="case-visual" style="background:linear-gradient(135deg,#f5f5f5 0%,#e8e8e8 100%);">🔍</div>
+            <div class="case-body">
+              <p class="case-tag" data-lang="en">UX Audit</p>
+              <p class="case-tag" data-lang="ru">UX-аудит</p>
+              <p class="case-title" data-lang="en">Website UX audit — 400+ recommendations</p>
+              <p class="case-title" data-lang="ru">UX-аудит сайта — 400+ рекомендаций</p>
+              <p class="case-desc" data-lang="en">Deep analysis of flows, navigation, and key user scenarios</p>
+              <p class="case-desc" data-lang="ru">Глубокий анализ сценариев, навигации и ключевых флоу</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /experience -->
+<!-- Education -->
+<section id="education" class="fade-in">
+  <p class="section-label" data-lang="en">Education</p>
+  <p class="section-label" data-lang="ru">Образование</p>
+
+  <div class="edu-summary-card">
+    <p class="edu-summary-text" data-lang="en">I've wanted to be a designer for as long as I can remember. Over 20 years of design education behind me — from a children's art school at 8 to Gorbunov Bureau.</p>
+    <p class="edu-summary-text" data-lang="ru">Сколько себя помню, хотела быть дизайнером. Больше 20 лет дизайн-образования за плечами — от детского кружка в 8 лет до Школы дизайнеров Бюро Горбунова.</p>
+    <button class="edu-toggle" onclick="toggleEdu(this)">
+      <span data-lang="en">More details</span>
+      <span data-lang="ru">Подробнее</span>
+      <i class="edu-toggle-icon">↓</i>
+    </button>
+  </div>
+
+  <div class="edu-details hidden">
+    <div class="exp-item">
+      <span class="exp-years">2022–2023</span>
+      <div>
+        <p class="exp-role" data-lang="en">Gorbunov Bureau Design School</p>
+        <p class="exp-role" data-lang="ru">Школа дизайнеров Бюро Горбунова</p>
+        <p class="exp-desc" data-lang="en">Interface, information, and product design. Practical program combining theory, real-world projects, and expert feedback.</p>
+        <p class="exp-desc" data-lang="ru">Интерфейсный и информационный дизайн. Практическая программа: теория, реальные проекты, экспертная обратная связь.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <span class="exp-years">2022</span>
+      <div>
+        <p class="exp-role" data-lang="en">Bang Bang Education — Interface Texts</p>
+        <p class="exp-role" data-lang="ru">Bang Bang Education — Тексты для интерфейсов</p>
+        <p class="exp-desc" data-lang="en">Writing clear, simple digital interface texts under the guidance of the chief editor of Raiffeisen Bank.</p>
+        <p class="exp-desc" data-lang="ru">Интерфейсные тексты под руководством главреда Райффайзенбанка.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <span class="exp-years">2021</span>
+      <div>
+        <p class="exp-role" data-lang="en">Gorbunov Bureau — UI & Information Presentation (Ilya Birman)</p>
+        <p class="exp-role" data-lang="ru">Курс Ильи Бирмана «Пользовательский интерфейс и представление информации»</p>
+        <p class="exp-desc" data-lang="en">UI/UX principles, prototyping, usability, information architecture.</p>
+        <p class="exp-desc" data-lang="ru">Основы UI/UX, прототипирование, юзабилити, структурирование информации.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <span class="exp-years">2019–2021</span>
+      <div>
+        <p class="exp-role" data-lang="en">HSE Art and Design School — Communication Design</p>
+        <p class="exp-role" data-lang="ru">Высшая школа экономики — Коммуникационный дизайн</p>
+        <p class="exp-desc" data-lang="en">Graphic, branding, editorial, and multimedia projects. Completed a UX/UI module with a digital app from concept to prototype.</p>
+        <p class="exp-desc" data-lang="ru">Графика, брендинг, редакторский и мультимедиадизайн. UX/UI-модуль с разработкой цифрового приложения от концепта до прототипа.</p>
+      </div>
+    </div>
+    <div class="exp-item edu-item-last">
+      <span class="exp-years">2008–2017</span>
+      <div>
+        <p class="exp-role" data-lang="en">Children's Design Center — Design & Applied Arts</p>
+        <p class="exp-role" data-lang="ru">Детский дизайн-центр — Дизайн и прикладное искусство</p>
+        <p class="exp-desc" data-lang="en">9-year program started at age 8. Drawing, painting, graphic and applied design, sculpture. Awarded top student among 17,000+ participants.</p>
+        <p class="exp-desc" data-lang="ru">9-летняя программа, начала в 8 лет. Рисунок, живопись, графический и прикладной дизайн, скульптура. Победитель среди 17 000+ студентов креативных программ.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /education -->
+<!-- CHANNEL -->
+<section id="channel" class="fade-in">
+  <p class="section-label" data-lang="en">Channel</p>
+  <p class="section-label" data-lang="ru">Канал</p>
+  <h2 data-lang="en">I write about design</h2>
+  <h2 data-lang="ru">Пишу о дизайне</h2>
+  <p class="channel-desc" data-lang="en">Since 2020 I've been running <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">oh my eyes</a> — a Telegram channel about design: what works, what doesn't, and why.</p>
+  <p class="channel-desc" data-lang="ru">С 2020 года веду <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">oh my eyes</a> — Telegram-канал о дизайне: что работает, что нет и почему.</p>
+
+  <div class="channel-grid">
+
+    <!-- Карточка-цитата (широкая) — замени текст на реальную цитату из канала -->
+    <div class="channel-card channel-card--quote">
+      <p class="channel-card-label" data-lang="en">Quote</p>
+      <p class="channel-card-label" data-lang="ru">Цитата</p>
+      <blockquote class="channel-quote" data-lang="both">
+        — Место для цитаты из канала
+      </blockquote>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="en">Read in channel →</a>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="ru">Читать в канале →</a>
+    </div>
+
+    <!-- Пост 1 — замени на реальный пост -->
+    <div class="channel-card">
+      <p class="channel-card-label" data-lang="en">Post</p>
+      <p class="channel-card-label" data-lang="ru">Пост</p>
+      <p class="channel-card-title" data-lang="both">Название поста</p>
+      <p class="channel-card-text" data-lang="en">Short excerpt from the post — one or two sentences that make you want to read more.</p>
+      <p class="channel-card-text" data-lang="ru">Короткий отрывок из поста — одно-два предложения, после которых хочется читать дальше.</p>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="en">Read →</a>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="ru">Читать →</a>
+    </div>
+
+    <!-- Пост 2 — замени на реальный пост -->
+    <div class="channel-card">
+      <p class="channel-card-label" data-lang="en">Post</p>
+      <p class="channel-card-label" data-lang="ru">Пост</p>
+      <p class="channel-card-title" data-lang="both">Название поста</p>
+      <p class="channel-card-text" data-lang="en">Short excerpt from the post — one or two sentences that make you want to read more.</p>
+      <p class="channel-card-text" data-lang="ru">Короткий отрывок из поста — одно-два предложения, после которых хочется читать дальше.</p>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="en">Read →</a>
+      <a href="https://t.me/glazamoiglaza" target="_blank" class="channel-card-link" data-lang="ru">Читать →</a>
+    </div>
+
+  </div>
+</section>
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="fade-in">
+  <p class="section-label" data-lang="en">What people say</p>
+  <p class="section-label" data-lang="ru">Что говорят люди</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en">She grew from a junior into a designer who <em>leads projects from start to finish with full ownership</em> — and did so without a single operational mishap.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Выросла из джуна в дизайнера, который <em>ведёт проекты от начала до конца с полной ответственностью</em> — и без единого сбоя.</blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both">Ivan Rozhkov</span>
+        <span class="testimonial-role" data-lang="en">Design Lead & Art Director</span>
+        <span class="testimonial-role" data-lang="ru">Дизайн-лид и арт-директор</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en">Working with Arina, I always feel <em>things are in safe hands.</em> She brings fresh ideas — not only for the product, but also for how the team collaborates.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Работая с Ариной, я всегда чувствую, <em>что всё под контролем.</em> Она приносит свежие идеи — не только для продукта, но и для того, как команда работает вместе.</blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both">Olga Iakusheva</span>
+        <span class="testimonial-role" data-lang="en">Product Designer</span>
+        <span class="testimonial-role" data-lang="ru">Продуктовый дизайнер</span>
+      </div>
+    </div>
+    <div class="testimonial-card testimonial-card--wide">
+      <blockquote class="testimonial-quote" data-lang="en">Arina redesigned the site, then came up with social media CTAs on her own — and <em>started tracking the metrics herself: set up goals in Yandex Metrica, got access to the channel.</em> I've never seen that level of dedication before.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Арина обновила дизайн, потом сама придумала блоки перехода в соцсети — и <em>сама стала следить за метриками: настроила цели в Метрике, взяла доступ к каналу.</em> Такого фанатизма я вообще никогда не встречала.</blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both">Людмила Сарычева</span>
+        <span class="testimonial-role" data-lang="en">Author · «Пиши, сокращай», «Новые правила деловой переписки»</span>
+        <span class="testimonial-role" data-lang="ru">Автор · «Пиши, сокращай», «Новые правила деловой переписки»</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <h2 data-lang="en">Let's do something<br/>cool together</h2>
+  <h2 data-lang="ru">Давайте сделаем<br/>что-то классное</h2>
+  <p data-lang="en">Open to new opportunities, collaborations, and interesting projects.</p>
+  <p data-lang="ru">Открыта к новым возможностям, коллаборациям и интересным проектам.</p>
+  <div class="contact-links">
+    <a href="mailto:arina@daletskaya.com" class="btn-primary" data-lang="en">Send an email</a>
+    <a href="mailto:arina@daletskaya.com" class="btn-primary" data-lang="ru">Написать письмо</a>
+    <a href="https://www.linkedin.com/in/arinadaletskaya/" target="_blank" class="btn-secondary" data-lang="en">Connect on LinkedIn</a>
+    <a href="https://www.linkedin.com/in/arinadaletskaya/" target="_blank" class="btn-secondary" data-lang="ru">Написать в LinkedIn</a>
+    <a href="https://t.me/glazamoiglaza" target="_blank" class="btn-secondary" data-lang="en">Text on Telegram</a>
+    <a href="https://t.me/glazamoiglaza" target="_blank" class="btn-secondary" data-lang="ru">Написать в Telegram</a>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <p data-lang="en">© 2025 Arina Daletskaya</p>
+  <p data-lang="ru">© 2025 Арина Далецкая</p>
+  <div style="display:flex;gap:20px;">
+    <a href="https://www.linkedin.com/in/arinadaletskaya/" target="_blank">LinkedIn</a>
+    <a href="https://t.me/glazamoiglaza" target="_blank">Telegram</a>
+    <a href="mailto:arina@daletskaya.com" target="_blank">Email</a>
+
+  </div>
+</footer>
+<!-- CASE MODAL -->
+<div class="modal-overlay" id="caseModal" onclick="closeCaseModal(event)">
+  <div class="modal-sheet" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span class="modal-header-tag" id="modalTag"></span>
+      <button class="modal-close" onclick="closeCaseModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+<script>
+  function setLang(lang) {
+    document.body.setAttribute('data-active-lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+
+  // Liquid glass nav + name swap after hero
+  const nav = document.querySelector('nav');
+  const hero = document.getElementById('hero');
+  window.addEventListener('scroll', () => {
+    const pastHero = window.scrollY > hero.offsetHeight;
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+    nav.classList.toggle('past-hero', pastHero);
+  }, { passive: true });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Hero stagger
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#hero .fade-in').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 75}ms`;
+      setTimeout(() => el.classList.add('visible'), 40 + i * 75);
+    });
+  });
+
+  // ── Case Modal ──
+  const caseData = {
+  "tanuki-login": {
+    "tag": {
+      "en": "Mobile · Auth",
+      "ru": "Мобайл · Авторизация"
+    },
+    "title": {
+      "en": "Login flow redesign",
+      "ru": "Редизайн флоу логина"
+    },
+    "subtitle": {
+      "en": "Tanuki Tech · 2024",
+      "ru": "Tanuki Tech · 2024"
+    },
+    "metrics": [
+      {
+        "num": "2×",
+        "label": {
+          "en": "operational cost reduction",
+          "ru": "снижение операционных затрат"
+        }
+      },
+      {
+        "num": "$2,500",
+        "label": {
+          "en": "monthly savings",
+          "ru": "экономия в месяц"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">The existing login flow relied on SMS verification, which was expensive and caused user drop-offs during peak hours. The business needed to reduce costs while improving the authentication experience.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — login screens before & after</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Mapped the existing funnel, identified the highest drop-off point (SMS wait time), and designed an alternative flow using push-based verification. Ran A/B tests to validate the hypothesis before full rollout.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — user flow diagram</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Operational costs cut by 2× (saving ~$2,500/month). Completion rate improved by 18%. The new flow became the default for all three country markets.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Старый флоу логина работал через СМС-верификацию — дорого и с потерей пользователей на пиковых нагрузках. Бизнесу нужно было снизить затраты и улучшить опыт авторизации.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — экраны логина до и после</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Построила карту текущей воронки, нашла главную точку отвала (ожидание СМС), спроектировала альтернативный флоу через пуш-верификацию. Провела А/Б-тест перед полным раскатом.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — схема пользовательского флоу</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Операционные затраты снизились в 2 раза (экономия ~$2 500/мес). Конверсия прохождения выросла на 18%. Новый флоу стал дефолтным для всех трёх рынков.</p>\n"
+    }
+  },
+  "tanuki-homepage": {
+    "tag": {
+      "en": "Mobile · Homepage",
+      "ru": "Мобайл · Главный экран"
+    },
+    "title": {
+      "en": "Homepage redesign",
+      "ru": "Редизайн главного экрана"
+    },
+    "subtitle": {
+      "en": "Tanuki Tech · 2024",
+      "ru": "Tanuki Tech · 2024"
+    },
+    "metrics": [
+      {
+        "num": "2→5%",
+        "label": {
+          "en": "conversion growth",
+          "ru": "рост конверсии"
+        }
+      },
+      {
+        "num": "150%",
+        "label": {
+          "en": "engagement increase",
+          "ru": "рост вовлечённости"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">The homepage had low engagement and a conversion rate stuck at 2%. The content hierarchy was unclear — users had trouble discovering restaurants and promotions.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — old vs new homepage</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Conducted user interviews and heatmap analysis. Redesigned the content hierarchy, introduced personalized restaurant cards, and created a new promotional block system. Iterated through 3 design rounds with the product team.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — design iterations</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Conversion grew from 2% to 5% within the first month after launch. Average session duration increased significantly.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Главный экран показывал низкую вовлечённость, конверсия застряла на 2%. Иерархия контента была нечёткой — пользователи плохо находили рестораны и акции.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — старый и новый главный экран</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Провела интервью и анализ тепловых карт. Перестроила иерархию контента, ввела персонализированные карточки ресторанов и новую систему промо-блоков. Три раунда итераций с продуктовой командой.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — итерации дизайна</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Конверсия выросла с 2 до 5% в первый месяц после запуска. Время сессии заметно увеличилось.</p>\n"
+    }
+  },
+  "tanuki-order": {
+    "tag": {
+      "en": "Mobile · Order",
+      "ru": "Мобайл · Заказ"
+    },
+    "title": {
+      "en": "Order status card",
+      "ru": "Карточка статуса заказа"
+    },
+    "subtitle": {
+      "en": "Tanuki Tech · 2023",
+      "ru": "Tanuki Tech · 2023"
+    },
+    "metrics": [
+      {
+        "num": "−40%",
+        "label": {
+          "en": "support tickets about delivery",
+          "ru": "обращений о доставке"
+        }
+      },
+      {
+        "num": "4.6★",
+        "label": {
+          "en": "post-order satisfaction",
+          "ru": "удовлетворённость заказом"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">Users frequently contacted support asking about order status. The existing tracking screen was generic and lacked real-time feedback.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — old order status screen</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Redesigned the post-order tracking experience with real-time updates, clear status transitions, and estimated delivery time. Added micro-interactions to reduce perceived wait time.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — new order tracking flow</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Support tickets related to delivery dropped by 40%. Post-order satisfaction score reached 4.6 stars.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Пользователи часто писали в поддержку с вопросами о статусе заказа. Экран отслеживания был примитивным и не давал реального фидбека.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — старый экран статуса заказа</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Переработала экран отслеживания: реал-тайм обновления, понятные переходы между статусами, расчётное время доставки. Добавила микроанимации для уменьшения воспринимаемого ожидания.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — новый флоу отслеживания заказа</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Обращения о доставке упали на 40%. Оценка удовлетворённости заказом — 4.6 звезды.</p>\n"
+    }
+  },
+  "tanuki-cart": {
+    "tag": {
+      "en": "Mobile · Web",
+      "ru": "Мобайл · Веб"
+    },
+    "title": {
+      "en": "Cart & checkout redesign",
+      "ru": "Редизайн корзины и чекаута"
+    },
+    "subtitle": {
+      "en": "Tanuki Tech · 2024",
+      "ru": "Tanuki Tech · 2024"
+    },
+    "metrics": [
+      {
+        "num": "+12%",
+        "label": {
+          "en": "checkout completion",
+          "ru": "завершение оформления"
+        }
+      },
+      {
+        "num": "−3",
+        "label": {
+          "en": "steps removed from flow",
+          "ru": "шага убрано из флоу"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">The checkout flow had too many steps, confusing payment options, and a high abandonment rate. Users often left at the address confirmation stage.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — old checkout flow</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Simplified the flow from 7 to 4 steps. Introduced saved addresses, one-tap reorder, and clearer payment UX. Worked closely with the backend team on API constraints.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — new cart & checkout</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Checkout completion rate grew by 12%. Average time from cart to order confirmation dropped significantly.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">В чекауте было слишком много шагов, запутанные способы оплаты и высокий процент отвала. Пользователи часто уходили на этапе подтверждения адреса.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — старый флоу чекаута</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Упростила флоу с 7 до 4 шагов. Добавила сохранённые адреса, быстрый перезаказ и более понятный UX оплаты. Тесно работала с бэкенд-командой по ограничениям API.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — новая корзина и чекаут</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Конверсия оформления выросла на 12%. Время от корзины до подтверждения заказа заметно сократилось.</p>\n"
+    }
+  },
+  "agency-clinic": {
+    "tag": {
+      "en": "Healthcare · UX",
+      "ru": "Здравоохранение · UX"
+    },
+    "title": {
+      "en": "Rehabilitation clinic — ongoing work",
+      "ru": "Сайт клиники реабилитации — в процессе"
+    },
+    "subtitle": {
+      "en": "IT-Agency · 2023–now",
+      "ru": "IT-Agency · 2023–наст. время"
+    },
+    "metrics": [
+      {
+        "num": "6 mo",
+        "label": {
+          "en": "ongoing improvements",
+          "ru": "непрерывных улучшений"
+        }
+      },
+      {
+        "num": "25+",
+        "label": {
+          "en": "pages designed",
+          "ru": "страниц спроектировано"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">A rehabilitation clinic needed a full website redesign to better communicate their services and streamline patient onboarding. The existing site was outdated and hard to navigate.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — clinic website pages</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Long-term collaboration: redesigned the information architecture, created a modular page system, and designed key flows — from service discovery to appointment booking. Regular design reviews with the medical team.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — page layouts & components</div>\n<p class=\"modal-section-title\">Status</p>\n<p class=\"modal-text\">Ongoing project with iterative releases. Case study with full visual documentation coming soon.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Клинике реабилитации нужен полный редизайн сайта: лучше рассказывать о услугах и упростить онбординг пациентов. Старый сайт устарел и был неудобен в навигации.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — страницы сайта клиники</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Долгосрочная работа: перестроила информационную архитектуру, создала модульную систему страниц, спроектировала ключевые флоу — от поиска услуги до записи на приём. Регулярные дизайн-ревью с медкомандой.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — макеты страниц и компоненты</div>\n<p class=\"modal-section-title\">Статус</p>\n<p class=\"modal-text\">Проект продолжается с итеративными релизами. Кейс с полной визуальной документацией скоро будет.</p>\n"
+    }
+  },
+  "agency-fintech": {
+    "tag": {
+      "en": "Fintech · Landing",
+      "ru": "Финтех · Лендинг"
+    },
+    "title": {
+      "en": "Fintech landing page",
+      "ru": "Лендинг для финтех-клиента"
+    },
+    "subtitle": {
+      "en": "IT-Agency · 2023",
+      "ru": "IT-Agency · 2023"
+    },
+    "metrics": [
+      {
+        "num": "1 mo",
+        "label": {
+          "en": "from zero to launch",
+          "ru": "от нуля до запуска"
+        }
+      },
+      {
+        "num": "8",
+        "label": {
+          "en": "screens designed",
+          "ru": "экранов спроектировано"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">A fintech startup entering a new market needed a landing page fast. The challenge was communicating a complex product simply and building trust with a new audience.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — landing page sections</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Designed a conversion-focused landing page with clear value proposition, social proof, and a streamlined sign-up flow. Went from brief to live in under a month.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — responsive views</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Launched on schedule. The page became the primary acquisition channel for the new market entry.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Финтех-стартап выходил на новый рынок и нуждался в лендинге в сжатые сроки. Задача — просто объяснить сложный продукт и завоевать доверие новой аудитории.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — секции лендинга</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Спроектировала лендинг на конверсию: понятное ценностное предложение, социальное доказательство, простая регистрация. От брифа до продакшена за месяц.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — адаптивные экраны</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Запустились в срок. Страница стала основным каналом привлечения на новом рынке.</p>\n"
+    }
+  },
+  "agency-audit": {
+    "tag": {
+      "en": "UX Audit",
+      "ru": "UX-аудит"
+    },
+    "title": {
+      "en": "Website UX audit — 400+ recommendations",
+      "ru": "UX-аудит сайта — 400+ рекомендаций"
+    },
+    "subtitle": {
+      "en": "IT-Agency · 2023",
+      "ru": "IT-Agency · 2023"
+    },
+    "metrics": [
+      {
+        "num": "400+",
+        "label": {
+          "en": "recommendations",
+          "ru": "рекомендаций"
+        }
+      },
+      {
+        "num": "120+",
+        "label": {
+          "en": "pages analyzed",
+          "ru": "страниц проанализировано"
+        }
+      }
+    ],
+    "body": {
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">A large client needed a comprehensive UX audit of their website. The site had grown organically over years and accumulated inconsistencies, dead ends, and usability issues.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — audit document excerpts</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Conducted a deep heuristic analysis across 120+ pages. Documented every issue with screenshots, severity ratings, and specific fix recommendations. Organized findings by user flow and business impact.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — categorized findings</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Delivered a structured audit with 400+ actionable recommendations. The client used it as a roadmap for their redesign over the following year.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Крупному клиенту нужен комплексный UX-аудит сайта. Сайт рос органически и накопил несоответствия, тупики и проблемы юзабилити.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — фрагменты аудит-документа</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Провела глубокий эвристический анализ по 120+ страницам. Задокументировала каждую проблему со скриншотами, оценкой критичности и конкретными рекомендациями. Структурировала по пользовательским флоу и влиянию на бизнес.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — категоризированные находки</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Готовый аудит с 400+ рекомендациями. Клиент использовал его как дорожную карту редизайна на следующий год.</p>\n"
+    }
+  }
+};
+
+  function openCaseModal(caseId) {
+    const data = caseData[caseId];
+    if (!data) return;
+    const lang = document.body.getAttribute('data-active-lang') || 'en';
+    const modal = document.getElementById('caseModal');
+    const tag = document.getElementById('modalTag');
+    const body = document.getElementById('modalBody');
+
+    tag.textContent = data.tag[lang] || data.tag.en;
+
+    let metricsHtml = '';
+    if (data.metrics && data.metrics.length) {
+      metricsHtml = '<div class="modal-metrics">' +
+        data.metrics.map(m =>
+          `<div class="modal-metric"><div class="modal-metric-num">${m.num}</div><div class="modal-metric-label">${m.label[lang] || m.label.en}</div></div>`
+        ).join('') + '</div>';
+    }
+
+    body.innerHTML = `
+      <h2 class="modal-title">${data.title[lang] || data.title.en}</h2>
+      <p class="modal-subtitle">${data.subtitle[lang] || data.subtitle.en}</p>
+      ${metricsHtml}
+      ${data.body[lang] || data.body.en}
+    `;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCaseModal(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const modal = document.getElementById('caseModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Escape key closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCaseModal();
+  });
+
+  // Click on case cards
+  document.querySelectorAll('.case-card[data-case]').forEach(card => {
+    card.addEventListener('click', () => openCaseModal(card.dataset.case));
+  });
+
+  function toggleEdu(btn) {
+    const section = btn.closest('#education');
+    const details = section.querySelector('.edu-details');
+    const isOpen = !details.classList.contains('hidden');
+    details.classList.toggle('hidden', isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
