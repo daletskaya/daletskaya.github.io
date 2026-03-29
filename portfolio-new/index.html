@@ -47,12 +47,12 @@
       transform: translateX(-50%);
       z-index: 100;
       height: 48px;
-      width: calc(100% - 48px);
-      max-width: 960px;
+      width: 100%;
+      max-width: 878px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 20px;
       background: transparent;
       border: 1px solid transparent;
       border-radius: 16px;
@@ -60,7 +60,7 @@
     }
 
     nav.scrolled {
-      background: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: saturate(180%) blur(32px);
       -webkit-backdrop-filter: saturate(180%) blur(32px);
       border: 1px solid rgba(255, 255, 255, 0.65);
@@ -98,15 +98,6 @@
       transform: translateY(0);
     }
 
-    nav.past-hero .nav-logo-hi {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-
-    nav.past-hero .nav-logo-name {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     .nav-right {
       display: flex;
@@ -185,12 +176,12 @@
     }
 
     .hero-name {
-      font-size: clamp(44px, 7.5vw, 84px);
+      font-size: clamp(36px, 6vw, 68px);
       font-weight: 600;
-      letter-spacing: -2.5px;
-      line-height: 1.02;
+      letter-spacing: -2px;
+      line-height: 1.05;
       color: var(--text-primary);
-      margin-bottom: 16px;
+      margin-bottom: 32px;
     }
 
     .hero-tagline {
@@ -212,10 +203,12 @@
     }
 
     .hero-desc {
-      font-size: 17px;
-      color: var(--text-secondary);
-      max-width: 540px;
-      line-height: 1.65;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 500;
+      color: var(--text-primary);
+      max-width: 800px;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
       margin-bottom: 44px;
     }
 
@@ -254,6 +247,24 @@
       transition: all var(--transition);
     }
     .btn-secondary:hover { background: #e5e5ea; transform: scale(1.02); }
+
+    .hero-more { margin-top: 24px; margin-bottom: 8px; }
+
+    .btn-more-about {
+      display: inline;
+      font-weight: inherit;
+      color: var(--text-primary);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--text-primary);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity var(--transition);
+    }
+    .btn-more-about:hover { opacity: 0.6; }
 
     /* ── ABOUT ── */
     .rounded-section {
@@ -407,6 +418,12 @@
       font-weight: 600;
       letter-spacing: -1px;
       margin-bottom: 44px;
+      color: #ffffff;
+    }
+
+    #experience .case-card,
+    #experience .exp-highlight {
+      background: rgba(255,255,255,0.09);
     }
 
     .exp-list { display: flex; flex-direction: column; }
@@ -485,11 +502,20 @@
       grid-template-columns: 1fr;
     }
 
-    /* ── EXPERIENCE (белый фон, как section) ── */
+    /* ── EXPERIENCE (тёмный фон) ── */
     #experience {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 80px 48px;
+      background: #111111;
+      border-radius: 24px;
+      --text-primary:    #ffffff;
+      --text-secondary:  rgba(255,255,255,0.62);
+      --text-tertiary:   rgba(255,255,255,0.52);
+      --border:          rgba(255,255,255,0.11);
+      --bg:              rgba(255,255,255,0.07);
+      --bg-secondary:    rgba(255,255,255,0.04);
+      --accent:          #60aaff;
     }
 
     /* ── Отступы между блоками ── */
@@ -499,7 +525,7 @@
     }
 
     /* gap после серой карточки About */
-    #about { margin-bottom: 0; }
+    #about { margin-bottom: 32px; }
     #experience { padding-top: 80px; }
 
     /* визуальный разделитель между Experience и Channel */
@@ -526,6 +552,7 @@
     .testimonial-card--wide {
       grid-column: span 2;
     }
+
 
     .testimonial-quote {
       font-size: 20px;
@@ -601,13 +628,11 @@
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
       padding: 28px max(24px, 5vw);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 4px;
     }
 
     footer p { font-size: 12px; color: var(--text-tertiary); }
@@ -637,8 +662,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      nav { width: calc(100% - 24px); top: 12px; }
+      nav { width: calc(100% - 24px); top: 12px; padding: 0 8px; }
       section { padding: 56px 20px; }
+      #hero { padding-top: 120px; }
 
       /* ── Experience: тёмный фон от края до края ── */
       #experience {
@@ -675,6 +701,8 @@
 
       #hero { padding-top: 90px; }
       .rounded-section { margin: 0 12px; padding: 40px 24px; }
+      #hero #about { margin-left: 0; margin-right: 0; }
+      .btn-more-about { text-decoration-thickness: 0.5px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .case-grid { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: repeat(3,1fr); }
@@ -998,12 +1026,56 @@
 
 <body data-active-lang="en">
 
+<div id="password-gate" style="
+  position:fixed; inset:0; z-index:9999;
+  background:#f5f5f7;
+  display:flex; align-items:center; justify-content:center;
+">
+  <div style="
+    background:#fff; border-radius:20px; padding:40px 36px;
+    width:100%; max-width:340px; text-align:center;
+    box-shadow:0 4px 32px rgba(0,0,0,0.08);
+  ">
+    <h1 style="font-size:18px;font-weight:600;color:#1d1d1f;margin-bottom:6px;font-family:-apple-system,sans-serif">Hi there 👋</h1>
+    <p style="font-size:14px;color:#6e6e73;margin-bottom:24px;font-family:-apple-system,sans-serif">Enter the password to view the portfolio</p>
+    <input id="pg-input" type="password" placeholder="Password" autofocus style="
+      width:100%;padding:12px 16px;border:1px solid #d2d2d7;border-radius:12px;
+      font-size:16px;outline:none;margin-bottom:12px;box-sizing:border-box;
+      font-family:-apple-system,sans-serif;
+    " />
+    <button onclick="checkPassword()" style="
+      width:100%;padding:12px;background:#1d1d1f;color:#fff;
+      border:none;border-radius:12px;font-size:15px;font-weight:500;
+      cursor:pointer;font-family:-apple-system,sans-serif;
+    ">Open portfolio</button>
+    <p id="pg-error" style="font-size:13px;color:#ff3b30;margin-top:10px;display:none;font-family:-apple-system,sans-serif">Wrong password, try again</p>
+  </div>
+</div>
+<script>
+  (function() {
+    if (sessionStorage.getItem('pg') === 'ok') {
+      document.getElementById('password-gate').style.display = 'none';
+    }
+    document.getElementById('pg-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+  })();
+  function checkPassword() {
+    var val = document.getElementById('pg-input').value;
+    if (val === 'busya') {
+      sessionStorage.setItem('pg', 'ok');
+      document.getElementById('password-gate').style.display = 'none';
+    } else {
+      document.getElementById('pg-error').style.display = 'block';
+      document.getElementById('pg-input').style.borderColor = '#ff3b30';
+    }
+  }
+</script>
+
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <span class="nav-logo-hi">Hi there!</span>
-    <span class="nav-logo-name" data-lang="en">Arina Daletskaya</span>
-    <span class="nav-logo-name" data-lang="ru">Арина Далецкая</span>
+    <span class="nav-logo-hi" style="color: var(--text-primary);">Hi, Arina Daletskaya is here</span>
   </a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -1012,12 +1084,12 @@
         <a href="#experience" data-lang="ru">Работы</a>
       </li>
       <li>
-        <a href="#about" data-lang="en">About</a>
-        <a href="#about" data-lang="ru">Обо мне</a>
+        <a href="#channel" data-lang="en">My channel</a>
+        <a href="#channel" data-lang="ru">Мой канал</a>
       </li>
       <li>
-        <a href="#experience" data-lang="en">Experience</a>
-        <a href="#experience" data-lang="ru">Опыт</a>
+        <a href="#testimonials" data-lang="en">What people say</a>
+        <a href="#testimonials" data-lang="ru">Что говорят</a>
       </li>
       <li>
         <a href="#contact" data-lang="en">Contact</a>
@@ -1033,12 +1105,24 @@
 </nav>
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow fade-in" data-lang="en">Product Designer</p>
-  <p class="hero-eyebrow fade-in" data-lang="ru">Продуктовый дизайнер</p>
-  <h1 class="hero-name fade-in">Arina<br/>Daletskaya</h1>
-  <p class="hero-title fade-in" data-lang="both">Think about users<br/>to improve the business.</p>
-  <p class="hero-desc fade-in" data-lang="en">I design digital products that are easy to use and hard to put down. Currently at <strong>Tanuki Tech</strong> — a B2C FoodTech e-commerce platform where I build the end-to-end ordering experience for 100+ restaurants across 3 countries.</p>
-  <p class="hero-desc fade-in" data-lang="ru">Проектирую продукты, которыми приятно пользоваться. Сейчас в <strong>Tanuki Tech</strong> — B2C FoodTech e-commerce, где я строю сквозной путь пользователя для 100+ ресторанов в 3 странах.</p>
+  <h1 class="hero-name fade-in" data-lang="both">Think about users to improve the business</h1>
+  <p class="hero-desc fade-in" data-lang="en">I design digital products that are easy to use and hard to put down. Currently at <strong>Tanuki Tech</strong> — a B2C FoodTech e-commerce platform where I build the end-to-end ordering experience for 100+ restaurants across 3 countries. <button class="btn-more-about" onclick="toggleAbout(this)" data-lang="en" style="font-size:inherit;text-decoration:underline;text-underline-offset:3px;">More about me</button></p>
+  <p class="hero-desc fade-in" data-lang="ru">Проектирую продукты, которыми приятно пользоваться. Сейчас в <strong>Tanuki Tech</strong> — B2C FoodTech e-commerce, где я строю сквозной путь пользователя для 100+ ресторанов в 3 странах. <button class="btn-more-about" onclick="toggleAbout(this)" data-lang="ru" style="font-size:inherit;text-decoration:underline;text-underline-offset:3px;">подробнее обо мне</button></p>
+  <div id="about" class="rounded-section" style="display:none; margin-top: 32px;">
+    <div class="about-grid">
+      <div class="about-left">
+        <h2 data-lang="en">I've wanted to be a designer for as long as I can remember</h2>
+        <h2 data-lang="ru">Я хотела быть дизайнером сколько себя помню</h2>
+        <p data-lang="en">I work on the end-to-end customer journey — from registration and product discovery to cart, checkout, and payments. My daily work includes designing for mobile and web, conducting UX research, writing interface copy, and collaborating closely with developers.</p>
+        <p data-lang="ru">Я работаю над путём пользователя от начала до конца — от регистрации и выбора до корзины, оформления заказа и оплаты. Ежедневно проектирую для мобайла и веба, провожу UX-исследования, пишу интерфейсные тексты и работаю в тесном контакте с разработчиками.</p>
+        <p data-lang="en">I believe in both data and design intuition. I generate and test product hypotheses, work with metrics, and always ask "why". I started my career in a creative agency, designing for fintech, hospitality, and healthcare.</p>
+        <p data-lang="ru">Верю и в данные, и в дизайн-интуицию. Генерирую и проверяю продуктовые гипотезы, работаю с метриками и всегда спрашиваю «почему». Начинала в креативном агентстве, делала продукты для финтех, гостиничной отрасли и здравоохранения.</p>
+        <p data-lang="en">Design has been my thing since I was 8. I genuinely love what I do — and I share thoughts about it on Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
+        <p data-lang="ru">Дизайн — моё с 8 лет. Я по-настоящему люблю то, что делаю — и иногда делюсь мыслями в Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
+
+      </div>
+    </div>
+  </div>
   <div class="hero-cta fade-in">
     <a href="#experience" class="btn-primary" data-lang="en">See my work →</a>
     <a href="#experience" class="btn-primary" data-lang="ru">Смотреть работы →</a>
@@ -1046,85 +1130,6 @@
     <a href="#contact" class="btn-secondary" data-lang="ru">Написать мне</a>
   </div>
 </section>
-<!-- ABOUT -->
-<div id="about" class="rounded-section fade-in">
-  <p class="section-label" data-lang="en">About</p>
-  <p class="section-label" data-lang="ru">Обо мне</p>
-  <div class="about-grid">
-    <div class="about-left">
-      <h2 data-lang="en">The best design<br/>goes unnoticed</h2>
-      <h2 data-lang="ru">Лучший дизайн<br/>остаётся незаметным</h2>
-      <p data-lang="en">I work on the end-to-end customer journey — from registration and product discovery to cart, checkout, and payments. My daily work includes designing for mobile and web, conducting UX research, writing interface copy, and collaborating closely with developers.</p>
-      <p data-lang="ru">Я работаю над путём пользователя от начала до конца — от регистрации и выбора до корзины, оформления заказа и оплаты. Ежедневно проектирую для мобайла и веба, провожу UX-исследования, пишу интерфейсные тексты и работаю в тесном контакте с разработчиками.</p>
-      <p data-lang="en">I believe in both data and design intuition. I generate and test product hypotheses, work with metrics, and always ask "why". I started my career in a creative agency, designing for fintech, hospitality, and healthcare.</p>
-      <p data-lang="ru">Верю и в данные, и в дизайн-интуицию. Генерирую и проверяю продуктовые гипотезы, работаю с метриками и всегда спрашиваю «почему». Начинала в креативном агентстве, делала продукты для финтех, гостиничной отрасли и здравоохранения.</p>
-      <p data-lang="en">Design has been my thing since I was 8. I genuinely love what I do — and I share thoughts about it on Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
-      <p data-lang="ru">Дизайн — моё с 8 лет. Я по-настоящему люблю то, что делаю — и иногда делюсь мыслями в Telegram: <a href="https://t.me/glazamoiglaza" target="_blank" style="color:var(--accent);text-decoration:none;">t.me/glazamoiglaza</a>.</p>
-
-      <div class="about-stats">
-        <div class="stat-item">
-          <span class="stat-number">700K</span>
-          <span class="stat-label" data-lang="en">guests/month on the platform I design for</span>
-          <span class="stat-label" data-lang="ru">гостей/мес на платформе, которую я проектирую</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">50+</span>
-          <span class="stat-label" data-lang="en">UX improvements proposed in a single audit</span>
-          <span class="stat-label" data-lang="ru">UX-улучшений в рамках одного аудита</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">17</span>
-          <span class="stat-label" data-lang="en">years in design — started at 8</span>
-          <span class="stat-label" data-lang="ru">лет в дизайне — начала в 8</span>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="about-right">
-      <p class="section-label" data-lang="en">Skills & Tools</p>
-      <p class="section-label" data-lang="ru">Навыки и инструменты</p>
-      <div class="skills-list">
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">Figma, Miro, Adobe CC</span>
-          <span class="skill-name" data-lang="ru">Figma, Miro, Adobe CC</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">UX Research & Usability Testing</span>
-          <span class="skill-name" data-lang="ru">UX-исследования и юзабилити</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">User Interviews, CJM, JTBD, CustDev</span>
-          <span class="skill-name" data-lang="ru">Интервью, CJM, JTBD, CustDev</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">Prototyping & Wireframing</span>
-          <span class="skill-name" data-lang="ru">Прототипирование и вайрфреймы</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">Design Systems</span>
-          <span class="skill-name" data-lang="ru">Дизайн-системы</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">UX Writing & Interface Copy</span>
-          <span class="skill-name" data-lang="ru">UX-копирайтинг</span>
-          
-        </div>
-        <div class="skill-item">
-          <span class="skill-name" data-lang="en">Data-driven design, Yandex Metrica</span>
-          <span class="skill-name" data-lang="ru">Data-driven дизайн, Яндекс Метрика</span>
-          
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
 <!-- EXPERIENCE -->
 <div id="experience" class="fade-in">
   <p class="section-label" data-lang="en">Experience</p>
@@ -1144,8 +1149,8 @@
         <div class="exp-highlights">
           <div class="exp-highlight">
             <span class="exp-highlight-num" data-lang="both">2×</span>
-            <span class="exp-highlight-label" data-lang="en">fewer operational costs from new login flow<br/><span style="color:var(--text-tertiary)">saving ~$2,500/month</span></span>
-            <span class="exp-highlight-label" data-lang="ru">снижение операционных трат за счёт нового флоу входа<br/><span style="color:var(--text-tertiary)">экономия ~$2 500/мес</span></span>
+            <span class="exp-highlight-label" data-lang="en">fewer operational costs from new login flow</span>
+            <span class="exp-highlight-label" data-lang="ru">снижение операционных трат за счёт нового флоу входа</span>
           </div>
           <div class="exp-highlight">
             <span class="exp-highlight-num" data-lang="both">2→5%</span>
@@ -1162,8 +1167,8 @@
               <p class="case-tag" data-lang="ru">Мобайл · Авторизация</p>
               <p class="case-title" data-lang="en">Login flow redesign</p>
               <p class="case-title" data-lang="ru">Редизайн флоу логина</p>
-              <p class="case-desc" data-lang="en">Cut operational costs 2× — saving ~$2,500/month</p>
-              <p class="case-desc" data-lang="ru">Операционные затраты снизились в 2 раза — ~$2 500/мес экономии</p>
+              <p class="case-desc" data-lang="en">Cut operational costs 2×</p>
+              <p class="case-desc" data-lang="ru">Операционные затраты снизились в 2 раза</p>
             </div>
           </div>
           <div class="case-card" data-case="tanuki-homepage">
@@ -1371,8 +1376,8 @@
 
   <div class="testimonials-grid">
     <div class="testimonial-card">
-      <blockquote class="testimonial-quote" data-lang="en">She grew from a junior into a designer who <em>leads projects from start to finish with full ownership</em> — and did so without a single operational mishap.</blockquote>
-      <blockquote class="testimonial-quote" data-lang="ru">Выросла из джуна в дизайнера, который <em>ведёт проекты от начала до конца с полной ответственностью</em> — и без единого сбоя.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="en">She grew into a designer who <em>leads projects from start to finish with full ownership</em> — and did so without a single operational mishap</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Выросла в дизайнера, который <em>ведёт проекты от начала до конца с полной ответственностью</em> — и без единого сбоя</blockquote>
       <div class="testimonial-author">
         <span class="testimonial-name" data-lang="both">Ivan Rozhkov</span>
         <span class="testimonial-role" data-lang="en">Design Lead & Art Director</span>
@@ -1380,8 +1385,8 @@
       </div>
     </div>
     <div class="testimonial-card">
-      <blockquote class="testimonial-quote" data-lang="en">Working with Arina, I always feel <em>things are in safe hands.</em> She brings fresh ideas — not only for the product, but also for how the team collaborates.</blockquote>
-      <blockquote class="testimonial-quote" data-lang="ru">Работая с Ариной, я всегда чувствую, <em>что всё под контролем.</em> Она приносит свежие идеи — не только для продукта, но и для того, как команда работает вместе.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="en">Working with Arina, I always feel <em>things are in safe hands.</em> She brings fresh ideas — not only for the product, but also for how the team collaborates</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Работая с Ариной, я всегда чувствую, <em>что всё под контролем.</em> Она приносит свежие идеи — не только для продукта, но и для того, как команда работает вместе</blockquote>
       <div class="testimonial-author">
         <span class="testimonial-name" data-lang="both">Olga Iakusheva</span>
         <span class="testimonial-role" data-lang="en">Product Designer</span>
@@ -1389,12 +1394,48 @@
       </div>
     </div>
     <div class="testimonial-card testimonial-card--wide">
-      <blockquote class="testimonial-quote" data-lang="en">Arina redesigned the site, then came up with social media CTAs on her own — and <em>started tracking the metrics herself: set up goals in Yandex Metrica, got access to the channel.</em> I've never seen that level of dedication before.</blockquote>
-      <blockquote class="testimonial-quote" data-lang="ru">Арина обновила дизайн, потом сама придумала блоки перехода в соцсети — и <em>сама стала следить за метриками: настроила цели в Метрике, взяла доступ к каналу.</em> Такого фанатизма я вообще никогда не встречала.</blockquote>
+      <blockquote class="testimonial-quote" data-lang="en">Arina redesigned the site, then came up with social media CTAs on her own — and <em>started tracking the metrics herself: set up goals in Yandex Metrica, got access to the channel.</em> I've never seen that level of dedication before</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">Арина обновила дизайн, потом сама придумала блоки перехода в соцсети — и <em>сама стала следить за метриками: настроила цели в Метрике, взяла доступ к каналу.</em> Такого фанатизма я вообще никогда не встречала</blockquote>
       <div class="testimonial-author">
         <span class="testimonial-name" data-lang="both">Людмила Сарычева</span>
         <span class="testimonial-role" data-lang="en">Author · «Пиши, сокращай», «Новые правила деловой переписки»</span>
         <span class="testimonial-role" data-lang="ru">Автор · «Пиши, сокращай», «Новые правила деловой переписки»</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en">She doesn't just execute tasks — <em>she actively suggests improvements</em> that resonate with the team and get implemented</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">She doesn't just execute tasks — <em>she actively suggests improvements</em> that resonate with the team and get implemented</blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both"></span>
+        <span class="testimonial-role" data-lang="en">Anonymous peer feedback</span>
+        <span class="testimonial-role" data-lang="ru">Anonymous peer feedback</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en">She listens carefully to others <em>while confidently advocating for a strong design point of view</em></blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">She listens carefully to others <em>while confidently advocating for a strong design point of view</em></blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both"></span>
+        <span class="testimonial-role" data-lang="en">Anonymous peer feedback</span>
+        <span class="testimonial-role" data-lang="ru">Anonymous peer feedback</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en"><em>Outstanding quality of work,</em> fast feedback, and quick response to change</blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru"><em>Outstanding quality of work,</em> fast feedback, and quick response to change</blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both"></span>
+        <span class="testimonial-role" data-lang="en">Anonymous peer feedback</span>
+        <span class="testimonial-role" data-lang="ru">Anonymous peer feedback</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="testimonial-quote" data-lang="en">She is highly engaged in team processes and <em>genuinely works to understand each problem in depth</em></blockquote>
+      <blockquote class="testimonial-quote" data-lang="ru">She is highly engaged in team processes and <em>genuinely works to understand each problem in depth</em></blockquote>
+      <div class="testimonial-author">
+        <span class="testimonial-name" data-lang="both"></span>
+        <span class="testimonial-role" data-lang="en">Anonymous peer feedback</span>
+        <span class="testimonial-role" data-lang="ru">Anonymous peer feedback</span>
       </div>
     </div>
 
@@ -1419,12 +1460,7 @@
 <footer>
   <p data-lang="en">© 2025 Arina Daletskaya</p>
   <p data-lang="ru">© 2025 Арина Далецкая</p>
-  <div style="display:flex;gap:20px;">
-    <a href="https://www.linkedin.com/in/arinadaletskaya/" target="_blank">LinkedIn</a>
-    <a href="https://t.me/glazamoiglaza" target="_blank">Telegram</a>
-    <a href="mailto:arina@daletskaya.com" target="_blank">Email</a>
-
-  </div>
+  <p>Thanks to Claude for making this site</p>
 </footer>
 <!-- CASE MODAL -->
 <div class="modal-overlay" id="caseModal" onclick="closeCaseModal(event)">
@@ -1437,6 +1473,23 @@
   </div>
 </div>
 <script>
+  function toggleAbout(btn) {
+    const about = document.getElementById('about');
+    const isHidden = about.style.display === 'none';
+    about.style.display = isHidden ? 'block' : 'none';
+    document.querySelectorAll('.btn-more-about').forEach(b => {
+      const lang = b.getAttribute('data-lang');
+      b.textContent = isHidden
+        ? (lang === 'ru' ? 'Скрыть' : 'Hide')
+        : (lang === 'ru' ? 'Подробнее обо мне' : 'More about me');
+    });
+    if (isHidden) {
+      setTimeout(() => {
+        window.scrollBy({ top: 30, behavior: 'smooth' });
+      }, 50);
+    }
+  }
+
   function setLang(lang) {
     document.body.setAttribute('data-active-lang', lang);
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1451,7 +1504,6 @@
   window.addEventListener('scroll', () => {
     const pastHero = window.scrollY > hero.offsetHeight;
     nav.classList.toggle('scrolled', window.scrollY > 20);
-    nav.classList.toggle('past-hero', pastHero);
   }, { passive: true });
 
   // Scroll fade-in
@@ -1496,18 +1548,11 @@
           "en": "operational cost reduction",
           "ru": "снижение операционных затрат"
         }
-      },
-      {
-        "num": "$2,500",
-        "label": {
-          "en": "monthly savings",
-          "ru": "экономия в месяц"
-        }
       }
     ],
     "body": {
-      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">The existing login flow relied on SMS verification, which was expensive and caused user drop-offs during peak hours. The business needed to reduce costs while improving the authentication experience.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — login screens before & after</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Mapped the existing funnel, identified the highest drop-off point (SMS wait time), and designed an alternative flow using push-based verification. Ran A/B tests to validate the hypothesis before full rollout.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — user flow diagram</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Operational costs cut by 2× (saving ~$2,500/month). Completion rate improved by 18%. The new flow became the default for all three country markets.</p>\n",
-      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Старый флоу логина работал через СМС-верификацию — дорого и с потерей пользователей на пиковых нагрузках. Бизнесу нужно было снизить затраты и улучшить опыт авторизации.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — экраны логина до и после</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Построила карту текущей воронки, нашла главную точку отвала (ожидание СМС), спроектировала альтернативный флоу через пуш-верификацию. Провела А/Б-тест перед полным раскатом.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — схема пользовательского флоу</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Операционные затраты снизились в 2 раза (экономия ~$2 500/мес). Конверсия прохождения выросла на 18%. Новый флоу стал дефолтным для всех трёх рынков.</p>\n"
+      "en": "<p class=\"modal-section-title\">Context</p>\n<p class=\"modal-text\">The existing login flow relied on SMS verification, which was expensive and caused user drop-offs during peak hours. The business needed to reduce costs while improving the authentication experience.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — login screens before & after</div>\n<p class=\"modal-section-title\">What I did</p>\n<p class=\"modal-text\">Mapped the existing funnel, identified the highest drop-off point (SMS wait time), and designed an alternative flow using push-based verification. Ran A/B tests to validate the hypothesis before full rollout.</p>\n<div class=\"modal-img-placeholder\">Screenshot placeholder — user flow diagram</div>\n<p class=\"modal-section-title\">Result</p>\n<p class=\"modal-text\">Operational costs cut by 2×. Completion rate improved by 18%. The new flow became the default for all three country markets.</p>\n",
+      "ru": "<p class=\"modal-section-title\">Контекст</p>\n<p class=\"modal-text\">Старый флоу логина работал через СМС-верификацию — дорого и с потерей пользователей на пиковых нагрузках. Бизнесу нужно было снизить затраты и улучшить опыт авторизации.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — экраны логина до и после</div>\n<p class=\"modal-section-title\">Что я сделала</p>\n<p class=\"modal-text\">Построила карту текущей воронки, нашла главную точку отвала (ожидание СМС), спроектировала альтернативный флоу через пуш-верификацию. Провела А/Б-тест перед полным раскатом.</p>\n<div class=\"modal-img-placeholder\">Плейсхолдер — схема пользовательского флоу</div>\n<p class=\"modal-section-title\">Результат</p>\n<p class=\"modal-text\">Операционные затраты снизились в 2 раза. Конверсия прохождения выросла на 18%. Новый флоу стал дефолтным для всех трёх рынков.</p>\n"
     }
   },
   "tanuki-homepage": {
